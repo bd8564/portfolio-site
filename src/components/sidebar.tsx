@@ -82,24 +82,24 @@ export function Sidebar({ locale, dict }: { locale: Locale; dict: Dictionary }) 
   return (
     <header
       id="top"
-      className="pt-16 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:py-20"
+      className="pt-16 lg:sticky lg:top-0 lg:flex lg:h-dvh lg:w-[42%] lg:flex-col lg:justify-between lg:gap-6 lg:overflow-y-auto lg:py-10 lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden"
     >
       <div>
         <p className="eyebrow">{hero.greeting}</p>
 
-        <h1 className="display mt-4 text-[2.25rem] leading-[1.05] text-accent-strong sm:text-[2.75rem]">
+        <h1 className="display mt-4 text-[2.25rem] leading-[1.05] text-accent-strong sm:text-[2.5rem]">
           <a href={`/${locale}`} className="-mx-1 rounded-md px-1 transition-colors hover:bg-accent-soft">
             {hero.name}
           </a>
         </h1>
 
-        <p className="mt-4 text-lg font-medium text-accent">{hero.role}</p>
+        <p className="mt-3 text-lg font-medium text-accent">{hero.role}</p>
 
-        <p className="mt-5 max-w-sm leading-8 text-muted">{hero.tagline}</p>
+        <p className="mt-4 max-w-sm leading-7 text-muted">{hero.tagline}</p>
 
         {/* Desktop: numbered vertical nav, like a table of contents. */}
-        <nav aria-label={ui.sections} className="mt-16 hidden lg:block">
-          <ul className="space-y-1">
+        <nav aria-label={ui.sections} className="mt-8 hidden lg:block">
+          <ul className="space-y-0.5">
             {nav.map((item, index) => {
               const isActive = active === item.id;
 
@@ -107,16 +107,8 @@ export function Sidebar({ locale, dict }: { locale: Locale; dict: Dictionary }) 
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className="group -mx-3 flex items-center gap-4 rounded-full px-3 py-1.5 transition-colors hover:bg-accent-soft"
+                    className="group -mx-2 inline-flex w-[11.5rem] items-center gap-2.5 whitespace-nowrap rounded-full px-2.5 py-1 transition-all duration-200 ease-out hover:scale-[1.04] hover:bg-accent-soft hover:shadow-[0_6px_18px_-12px_rgba(21,35,28,0.45)]"
                   >
-                    <span
-                      aria-hidden
-                      className={`h-px transition-all duration-300 ${
-                        isActive
-                          ? "w-16 bg-accent"
-                          : "w-8 bg-line group-hover:w-16 group-hover:bg-accent"
-                      }`}
-                    />
                     <span
                       className={`num text-xs ${
                         isActive ? "text-accent" : "text-muted"
@@ -144,7 +136,7 @@ export function Sidebar({ locale, dict }: { locale: Locale; dict: Dictionary }) 
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent/40 hover:bg-accent-soft"
+              className="flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-muted transition-all duration-200 ease-out hover:scale-105 hover:border-accent/40 hover:bg-accent-soft hover:shadow-[0_6px_18px_-12px_rgba(21,35,28,0.45)]"
             >
               <span className="num text-[0.65rem] text-accent">
                 {sectionNumber(index + 1, locale)}
@@ -155,7 +147,7 @@ export function Sidebar({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         </nav>
       </div>
 
-      <div className="mt-10 flex flex-col gap-6 pb-10 lg:pb-0">
+      <div className="mt-6 flex flex-col gap-5 pb-10 lg:mt-0 lg:pb-0">
         <LanguageSwitcher locale={locale} />
 
         <ul className="flex items-center gap-3">
